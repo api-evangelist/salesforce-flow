@@ -3,7 +3,7 @@ description: The Salesforce Flow API enables developers to interact with and man
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg
 url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
 created: 2024-01-15 00:00:00+00:00
-modified: 2024-01-15 00:00:00+00:00
+modified: '2026-03-16'
 tags:
 - Flow
 - Automation
@@ -25,8 +25,6 @@ apis:
   properties:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
-  - type: OpenAPI
-    url: https://api.example.com/salesforce-flow-openapi.json
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   contact:
@@ -44,8 +42,6 @@ apis:
   properties:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_tooling.meta/api_tooling/tooling_api_objects_flow.htm
-  - type: OpenAPI
-    url: https://api.example.com/salesforce-tooling-openapi.json
 - name: Salesforce Flow Interviews API
   description: API for executing and managing Flow interviews (instances)
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg
@@ -74,8 +70,6 @@ common:
 - type: Privacy Policy
   url: https://www.salesforce.com/company/privacy/
 maintainers:
-- type: Organization
-  name: Salesforce
-  email: developer@salesforce.com
-  url: https://developer.salesforce.com/
+- FN: Kin Lane
+  email: kin@apievangelist.com
 include: []
