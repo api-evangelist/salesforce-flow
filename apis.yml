@@ -1,4 +1,4 @@
-name: Salesforce Flow API
+name: Salesforce Flow
 description: The Salesforce Flow API enables developers to interact with and manage Salesforce Flow automation processes programmatically. This includes creating, updating, querying, and executing flows within Salesforce.
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg
 url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
