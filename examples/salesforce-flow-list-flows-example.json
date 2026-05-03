@@ -1,0 +1,49 @@
+{
+  "title": "List Flow Definitions Example",
+  "description": "Example request and response for listing Flow definitions",
+  "operation": "listFlows",
+  "method": "GET",
+  "path": "/sobjects/Flow",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "totalSize": 3,
+      "done": true,
+      "records": [
+        {
+          "Id": "300xx000000bpCAAQ",
+          "ApiName": "Account_Onboarding_Flow",
+          "Label": "Account Onboarding Flow",
+          "ProcessType": "Flow",
+          "Status": "Active",
+          "VersionNumber": 3
+        },
+        {
+          "Id": "300xx000000bpDBBR",
+          "ApiName": "Lead_Qualification_Flow",
+          "Label": "Lead Qualification Flow",
+          "ProcessType": "AutoLaunchedFlow",
+          "Status": "Active",
+          "VersionNumber": 1
+        },
+        {
+          "Id": "300xx000000bpECC5",
+          "ApiName": "Case_Escalation_Flow",
+          "Label": "Case Escalation Flow",
+          "ProcessType": "AutoLaunchedFlow",
+          "Status": "Draft",
+          "VersionNumber": 2
+        }
+      ]
+    }
+  }
+}

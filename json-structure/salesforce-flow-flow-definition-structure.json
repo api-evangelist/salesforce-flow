@@ -1,0 +1,88 @@
+{
+  "title": "Salesforce Flow Definition Structure",
+  "description": "Structural documentation for the Salesforce Flow definition resource.",
+  "resource": "Flow",
+  "baseUri": "https://{instance}.salesforce.com/services/data/v59.0/sobjects/Flow",
+  "fields": [
+    {
+      "name": "Id",
+      "type": "string",
+      "required": true,
+      "description": "Unique Salesforce record ID (15 or 18 characters)",
+      "example": "300xx000000bpCAAQ"
+    },
+    {
+      "name": "ApiName",
+      "type": "string",
+      "required": true,
+      "description": "API name of the flow for programmatic reference",
+      "example": "Account_Onboarding_Flow"
+    },
+    {
+      "name": "Label",
+      "type": "string",
+      "required": true,
+      "description": "Human-readable display label",
+      "example": "Account Onboarding Flow"
+    },
+    {
+      "name": "Description",
+      "type": "string",
+      "required": false,
+      "description": "Description of the flow purpose",
+      "example": "Guides users through new account onboarding steps"
+    },
+    {
+      "name": "ProcessType",
+      "type": "string",
+      "required": true,
+      "description": "Type of flow automation",
+      "enum": ["Flow", "AutoLaunchedFlow", "Workflow", "InvocableProcess"],
+      "example": "Flow"
+    },
+    {
+      "name": "Status",
+      "type": "string",
+      "required": true,
+      "description": "Activation status",
+      "enum": ["Active", "Obsolete", "Draft", "InvalidDraft"],
+      "example": "Active"
+    },
+    {
+      "name": "VersionNumber",
+      "type": "integer",
+      "required": false,
+      "description": "Current version number",
+      "example": 3
+    },
+    {
+      "name": "RunInMode",
+      "type": "string",
+      "required": false,
+      "description": "Sharing and permission mode for flow execution",
+      "example": "DefaultMode"
+    },
+    {
+      "name": "CreatedDate",
+      "type": "datetime",
+      "required": false,
+      "description": "ISO 8601 creation timestamp",
+      "example": "2024-01-15T10:30:00.000Z"
+    },
+    {
+      "name": "LastModifiedDate",
+      "type": "datetime",
+      "required": false,
+      "description": "ISO 8601 last modification timestamp",
+      "example": "2024-06-01T14:22:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "FlowInterview",
+      "description": "Running instances of this flow definition",
+      "type": "hasMany",
+      "resource": "FlowInterview"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+name: Salesforce Flow Vocabulary
+description: >-
+  Domain vocabulary and taxonomy for Salesforce Flow automation, covering
+  key concepts, process types, statuses, and operational terminology used
+  across the Salesforce Flow API.
+version: "1.0"
+created: "2026-05-02"
+modified: "2026-05-02"
+source: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
+
+terms:
+  - term: Flow
+    definition: >-
+      A Salesforce automation tool that collects data and performs actions in
+      your Salesforce org or an external system. Flows can guide users through
+      screens or run automatically in the background.
+    aliases:
+      - Screen Flow
+      - Visual Workflow
+    related:
+      - Flow Builder
+      - Process Builder
+
+  - term: Flow Interview
+    definition: >-
+      A running instance of a Flow. When a flow is executed, a FlowInterview
+      record is created to track the state, inputs, outputs, and current
+      position in the flow.
+    aliases:
+      - Flow Instance
+    related:
+      - Flow
+      - Pause
+
+  - term: AutoLaunchedFlow
+    definition: >-
+      A type of flow that runs automatically without user interaction, often
+      triggered by a record change, platform event, or invocable action call.
+    aliases:
+      - Autolaunched Flow
+      - Background Flow
+    related:
+      - Invocable Action
+      - Process Type
+
+  - term: Invocable Action
+    definition: >-
+      A mechanism to trigger a Flow from Apex, Process Builder, another Flow,
+      or via REST API by calling the /actions/custom/flow/{flowApiName} endpoint.
+    aliases:
+      - Flow Action
+    related:
+      - AutoLaunchedFlow
+      - REST API
+
+  - term: Flow Variable
+    definition: >-
+      A named value stored within a Flow interview. Variables can be Input
+      (passed in at start), Output (returned at end), or Internal (used only
+      within the flow).
+    aliases:
+      - Input Variable
+      - Output Variable
+    types:
+      - Input
+      - Output
+      - Internal
+
+  - term: ProcessType
+    definition: >-
+      The category of automation a Flow represents. Common types include Flow
+      (screen flow), AutoLaunchedFlow (background), InvocableProcess, Workflow,
+      and Orchestrator.
+    values:
+      - Flow
+      - AutoLaunchedFlow
+      - Workflow
+      - InvocableProcess
+      - CustomEvent
+      - FieldServiceMobile
+      - FieldServiceWeb
+      - Survey
+      - Orchestrator
+
+  - term: Flow Status
+    definition: >-
+      The activation state of a Flow version. Active flows can be run; Obsolete
+      flows are deactivated; Draft flows are in development; InvalidDraft flows
+      have errors.
+    values:
+      - Active
+      - Obsolete
+      - Draft
+      - InvalidDraft
+
+  - term: Flow Element
+    definition: >-
+      An individual step or node within a Flow definition. Elements include
+      Screens, Decisions, Loops, Assignments, Record operations, and Subflow
+      references.
+    types:
+      - Screen
+      - Decision
+      - Loop
+      - Assignment
+      - Create Records
+      - Update Records
+      - Delete Records
+      - Get Records
+      - Subflow
+
+  - term: Pause
+    definition: >-
+      A Flow element that suspends a Flow Interview until a specified condition
+      is met (e.g., a time-based trigger or platform event). Paused interviews
+      are stored as FlowInterview records.
+    related:
+      - Flow Interview
+      - Resume
+
+  - term: SOQL
+    definition: >-
+      Salesforce Object Query Language. Used to query Flow and FlowInterview
+      records via the /query endpoint with SELECT statements.
+    aliases:
+      - Salesforce Object Query Language
+    related:
+      - Query
+      - sObject
+
+  - term: Run In Mode
+    definition: >-
+      The sharing and permission context in which a Flow executes. Options are
+      DefaultMode (user permissions), SystemModeWithSharing (system with sharing
+      rules), or SystemModeWithoutSharing (full access).
+    values:
+      - DefaultMode
+      - SystemModeWithSharing
+      - SystemModeWithoutSharing
+
+  - term: Flow Builder
+    definition: >-
+      The Salesforce declarative tool for designing and building Flows. Accessed
+      through Setup in the Salesforce UI.
+    related:
+      - Flow
+      - Automation
+
+categories:
+  - name: Automation Types
+    description: Categories of Salesforce automation related to Flow
+    terms:
+      - Flow
+      - AutoLaunchedFlow
+      - Workflow
+      - InvocableProcess
+      - Orchestrator
+
+  - name: Execution Concepts
+    description: Terms related to how flows run at runtime
+    terms:
+      - Flow Interview
+      - Pause
+      - Flow Variable
+      - Flow Element
+
+  - name: API Operations
+    description: Key API operations for working with flows
+    terms:
+      - Invocable Action
+      - SOQL
+      - Flow Status

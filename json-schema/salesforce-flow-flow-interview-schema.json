@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/salesforce-flow/blob/main/json-schema/salesforce-flow-flow-interview-schema.json",
+  "title": "Salesforce Flow Interview",
+  "description": "Schema for a Salesforce Flow Interview, representing a running instance of a Flow.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Salesforce record ID for the FlowInterview"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Auto-generated name for the interview"
+    },
+    "CurrentElement": {
+      "type": "string",
+      "description": "API name of the current flow element being executed"
+    },
+    "GuidedFlowName": {
+      "type": "string",
+      "description": "API name of the Flow being interviewed"
+    },
+    "HasFinished": {
+      "type": "boolean",
+      "description": "Whether the flow interview has completed"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Salesforce ID of the interview owner"
+    },
+    "PauseLabel": {
+      "type": "string",
+      "description": "Label for the pause element if flow is paused"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the interview was created"
+    },
+    "LastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the interview was last modified"
+    },
+    "inputs": {
+      "type": "array",
+      "description": "Input variables passed to the flow interview",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Variable name"
+          },
+          "value": {
+            "description": "Variable value"
+          }
+        },
+        "required": ["name"]
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "description": "Output variables returned by the flow interview",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Variable name"
+          },
+          "value": {
+            "description": "Variable value"
+          }
+        }
+      }
+    }
+  },
+  "required": ["Id", "GuidedFlowName", "HasFinished"]
+}

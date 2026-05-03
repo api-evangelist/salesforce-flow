@@ -1,0 +1,40 @@
+{
+  "title": "Invoke Flow Action Example",
+  "description": "Example request and response for invoking a Salesforce Flow as an invocable action",
+  "operation": "invokeFlow",
+  "method": "POST",
+  "path": "/actions/custom/flow/{flowApiName}",
+  "request": {
+    "pathParameters": {
+      "flowApiName": "Account_Onboarding_Flow"
+    },
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "inputs": [
+        {
+          "accountId": "001xx000003GYkJAAW",
+          "contactEmail": "john.doe@acme.com",
+          "sendWelcomeEmail": true
+        }
+      ]
+    }
+  },
+  "response": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "outputs": [
+        {
+          "onboardingCaseId": "500xx000003GYkJAAW",
+          "welcomeEmailSent": true,
+          "nextStepTask": "Schedule Demo Call"
+        }
+      ]
+    }
+  }
+}

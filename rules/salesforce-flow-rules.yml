@@ -1,0 +1,96 @@
+rules:
+  salesforce-flow-operation-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' must use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][^a-z]*([A-Z][^a-z]*)*"
+
+  salesforce-flow-operation-id-camel-case:
+    description: OperationIds must use camelCase
+    message: "OperationId '{{value}}' must use camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  salesforce-flow-tags-title-case:
+    description: All tags must use Title Case
+    message: "Tag '{{value}}' must use Title Case"
+    severity: warn
+    given: "$.paths[*][*].tags[*]"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  salesforce-flow-response-200-description:
+    description: All 200 responses must have a description
+    message: "Response '200' must have a description"
+    severity: error
+    given: "$.paths[*][*].responses['200']"
+    then:
+      field: description
+      function: truthy
+
+  salesforce-flow-path-kebab-case:
+    description: Path segments must use kebab-case or standard Salesforce sObject naming
+    message: "Path '{{value}}' should use kebab-case for custom segments"
+    severity: info
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z][a-z0-9-]*({[a-zA-Z]+})?)*$"
+
+  salesforce-flow-required-fields-documented:
+    description: Request body schemas should document required fields
+    message: "Request body schema should specify required fields"
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody.content['application/json'].schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  salesforce-flow-contact-info-required:
+    description: API must have contact information
+    message: "API info must include contact details"
+    severity: error
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  salesforce-flow-version-present:
+    description: API must have a version
+    message: "API info must include a version"
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  salesforce-flow-servers-defined:
+    description: API must define at least one server
+    message: "API must define servers"
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  salesforce-flow-security-defined:
+    description: API must define security schemes
+    message: "API must define security requirements"
+    severity: error
+    given: "$"
+    then:
+      field: security
+      function: truthy

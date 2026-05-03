@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sf": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Id": {
+      "@id": "sf:Id",
+      "@type": "xsd:string"
+    },
+    "ApiName": {
+      "@id": "sf:ApiName",
+      "@type": "xsd:string"
+    },
+    "Label": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "ProcessType": {
+      "@id": "sf:ProcessType",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "schema:status",
+      "@type": "xsd:string"
+    },
+    "VersionNumber": {
+      "@id": "sf:VersionNumber",
+      "@type": "xsd:integer"
+    },
+    "RunInMode": {
+      "@id": "sf:RunInMode",
+      "@type": "xsd:string"
+    },
+    "CreatedDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "LastModifiedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "CreatedById": {
+      "@id": "sf:CreatedById",
+      "@type": "xsd:string"
+    },
+    "Flow": {
+      "@id": "sf:Flow",
+      "@type": "@id"
+    },
+    "FlowInterview": {
+      "@id": "sf:FlowInterview",
+      "@type": "@id"
+    },
+    "HasFinished": {
+      "@id": "sf:HasFinished",
+      "@type": "xsd:boolean"
+    },
+    "CurrentElement": {
+      "@id": "sf:CurrentElement",
+      "@type": "xsd:string"
+    },
+    "GuidedFlowName": {
+      "@id": "sf:GuidedFlowName",
+      "@type": "xsd:string"
+    },
+    "inputs": {
+      "@id": "sf:inputs",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "outputs": {
+      "@id": "sf:outputs",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "SoftwareApplication": {
+      "@id": "schema:SoftwareApplication"
+    },
+    "provider": {
+      "@id": "schema:provider",
+      "@type": "@id"
+    },
+    "Organization": {
+      "@id": "schema:Organization"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    }
+  }
+}

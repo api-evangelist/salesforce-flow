@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/salesforce-flow/blob/main/json-schema/salesforce-flow-flow-definition-schema.json",
+  "title": "Salesforce Flow Definition",
+  "description": "Schema for a Salesforce Flow definition object representing an automation process.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Salesforce record ID for the Flow",
+      "pattern": "^[a-zA-Z0-9]{15,18}$"
+    },
+    "ApiName": {
+      "type": "string",
+      "description": "API name of the Flow (unique identifier within the org)",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$"
+    },
+    "Label": {
+      "type": "string",
+      "description": "Display label of the Flow shown in the UI"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Description of the Flow's purpose"
+    },
+    "ProcessType": {
+      "type": "string",
+      "description": "Type of Flow automation process",
+      "enum": [
+        "Flow",
+        "AutoLaunchedFlow",
+        "Workflow",
+        "InvocableProcess",
+        "CustomEvent",
+        "FieldServiceMobile",
+        "FieldServiceWeb",
+        "Survey",
+        "SurveyEnrich",
+        "Orchestrator",
+        "ContactRequestFlow",
+        "RoutingFlow",
+        "TransactionSecurityFlow",
+        "ServiceCatalogItemFlow"
+      ]
+    },
+    "Status": {
+      "type": "string",
+      "description": "Activation status of the Flow",
+      "enum": ["Active", "Obsolete", "Draft", "InvalidDraft"]
+    },
+    "VersionNumber": {
+      "type": "integer",
+      "description": "Version number of the flow",
+      "minimum": 1
+    },
+    "RunInMode": {
+      "type": "string",
+      "description": "Run mode for the flow",
+      "enum": ["DefaultMode", "SystemModeWithSharing", "SystemModeWithoutSharing"]
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the flow was created"
+    },
+    "LastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the flow was last modified"
+    },
+    "CreatedById": {
+      "type": "string",
+      "description": "Salesforce ID of the user who created the flow"
+    },
+    "LastModifiedById": {
+      "type": "string",
+      "description": "Salesforce ID of the user who last modified the flow"
+    }
+  },
+  "required": ["Id", "ApiName", "Label", "ProcessType", "Status"]
+}
