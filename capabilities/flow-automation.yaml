@@ -1,248 +1,410 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Salesforce Flow Automation"
-  description: >-
-    Unified workflow capability for managing and executing Salesforce Flow
-    automation processes. Combines flow definition management, interview
-    execution, and invocable action triggering for business process
-    automation teams.
+  label: Salesforce Flow Automation
+  description: Unified workflow capability for managing and executing Salesforce Flow automation processes. Combines flow
+    definition management, interview execution, and invocable action triggering for business process automation teams.
   tags:
-    - Salesforce
-    - Flow
-    - Automation
-    - Workflow
-    - Business Process
-    - CRM
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Salesforce
+  - Flow
+  - Automation
+  - Workflow
+  - Business Process
+  - CRM
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      SALESFORCE_ACCESS_TOKEN: SALESFORCE_ACCESS_TOKEN
-
+- namespace: env
+  keys:
+    SALESFORCE_ACCESS_TOKEN: SALESFORCE_ACCESS_TOKEN
 capability:
   consumes:
-    - import: salesforce-flow
-      location: ./shared/flow-rest-api.yaml
-
+  - type: http
+    namespace: salesforce-flow
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Flow REST API for managing automation workflows
+    authentication:
+      type: bearer
+      token: '{{SALESFORCE_ACCESS_TOKEN}}'
+    resources:
+    - name: flow-definitions
+      path: /sobjects/Flow
+      description: Flow definition management
+      operations:
+      - name: list-flows
+        method: GET
+        description: List all Flow definitions in the org
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: flow-definition
+      path: /sobjects/Flow/{flowId}
+      description: Individual flow definition operations
+      operations:
+      - name: get-flow
+        method: GET
+        description: Get a specific Flow definition
+        inputParameters:
+        - name: flowId
+          in: path
+          type: string
+          required: true
+          description: The Salesforce ID of the Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-flow
+        method: PATCH
+        description: Update a Flow definition
+        inputParameters:
+        - name: flowId
+          in: path
+          type: string
+          required: true
+          description: The Salesforce ID of the Flow
+        body:
+          type: json
+          data:
+            Description: '{{tools.description}}'
+            Status: '{{tools.status}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: flow-interviews
+      path: /sobjects/FlowInterview
+      description: Flow interview creation
+      operations:
+      - name: create-flow-interview
+        method: POST
+        description: Create and start a new Flow Interview
+        body:
+          type: json
+          data:
+            FlowDefinitionView: '{{tools.flowDefinitionView}}'
+            inputs: '{{tools.inputs}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: flow-interview
+      path: /sobjects/FlowInterview/{interviewId}
+      description: Individual flow interview operations
+      operations:
+      - name: get-flow-interview
+        method: GET
+        description: Get the current state of a Flow Interview
+        inputParameters:
+        - name: interviewId
+          in: path
+          type: string
+          required: true
+          description: The Salesforce ID of the FlowInterview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-flow-interview
+        method: DELETE
+        description: Delete a paused Flow Interview
+        inputParameters:
+        - name: interviewId
+          in: path
+          type: string
+          required: true
+          description: The Salesforce ID of the FlowInterview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invocable-flows
+      path: /actions/custom/flow
+      description: List invocable flow actions
+      operations:
+      - name: list-invocable-flows
+        method: GET
+        description: List all flows exposed as invocable actions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invocable-flow
+      path: /actions/custom/flow/{flowApiName}
+      description: Individual invocable flow operations
+      operations:
+      - name: get-invocable-flow-metadata
+        method: GET
+        description: Get metadata for a specific invocable flow
+        inputParameters:
+        - name: flowApiName
+          in: path
+          type: string
+          required: true
+          description: API name of the Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: invoke-flow
+        method: POST
+        description: Execute a Flow as an invocable action
+        inputParameters:
+        - name: flowApiName
+          in: path
+          type: string
+          required: true
+          description: API name of the Flow to invoke
+        body:
+          type: json
+          data:
+            inputs: '{{tools.inputs}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: flow-query
+      path: /query
+      description: SOQL query for flows
+      operations:
+      - name: query-flows
+        method: GET
+        description: Query flows using SOQL
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: true
+          description: SOQL query string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: flow-automation-api
-      description: "Unified REST API for Salesforce Flow automation management."
-      resources:
-        - path: /v1/flows
-          name: flows
-          description: "Flow definition management"
-          operations:
-            - method: GET
-              name: list-flows
-              description: "List all Flow definitions in the org"
-              call: "salesforce-flow.list-flows"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/flows/{flowId}
-          name: flow
-          description: "Individual flow operations"
-          operations:
-            - method: GET
-              name: get-flow
-              description: "Get a specific Flow definition"
-              call: "salesforce-flow.get-flow"
-              with:
-                flowId: "rest.flowId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: PATCH
-              name: update-flow
-              description: "Update a Flow definition"
-              call: "salesforce-flow.update-flow"
-              with:
-                flowId: "rest.flowId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/interviews
-          name: interviews
-          description: "Flow interview (execution instance) management"
-          operations:
-            - method: POST
-              name: create-flow-interview
-              description: "Start a new Flow Interview"
-              call: "salesforce-flow.create-flow-interview"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/interviews/{interviewId}
-          name: interview
-          description: "Individual interview operations"
-          operations:
-            - method: GET
-              name: get-flow-interview
-              description: "Get current Flow Interview state"
-              call: "salesforce-flow.get-flow-interview"
-              with:
-                interviewId: "rest.interviewId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-flow-interview
-              description: "Delete a Flow Interview"
-              call: "salesforce-flow.delete-flow-interview"
-              with:
-                interviewId: "rest.interviewId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/invocable-flows
-          name: invocable-flows
-          description: "Invocable flow action catalog"
-          operations:
-            - method: GET
-              name: list-invocable-flows
-              description: "List all invocable flow actions"
-              call: "salesforce-flow.list-invocable-flows"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/invocable-flows/{flowApiName}
-          name: invocable-flow
-          description: "Execute specific invocable flows"
-          operations:
-            - method: GET
-              name: get-invocable-flow-metadata
-              description: "Get invocable flow input/output schema"
-              call: "salesforce-flow.get-invocable-flow-metadata"
-              with:
-                flowApiName: "rest.flowApiName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: invoke-flow
-              description: "Execute a flow action"
-              call: "salesforce-flow.invoke-flow"
-              with:
-                flowApiName: "rest.flowApiName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: flow-automation-mcp
-      transport: http
-      description: "MCP server for AI-assisted Salesforce Flow automation management."
-      tools:
-        - name: list-flows
-          description: "List all Flow definitions in the Salesforce org"
-          hints:
-            readOnly: true
-            idempotent: true
-            openWorld: true
-          call: "salesforce-flow.list-flows"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-flow
-          description: "Get details for a specific Flow definition by ID"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "salesforce-flow.get-flow"
-          with:
-            flowId: "tools.flowId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-flow
-          description: "Update a Flow definition's status or description"
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "salesforce-flow.update-flow"
-          with:
-            flowId: "tools.flowId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: start-flow-interview
-          description: "Create and start a new Flow Interview instance with input variables"
-          hints:
-            readOnly: false
-            destructive: false
-          call: "salesforce-flow.create-flow-interview"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-flow-interview-status
-          description: "Get the current state and output variables of a running Flow Interview"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "salesforce-flow.get-flow-interview"
-          with:
-            interviewId: "tools.interviewId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-flow-interview
-          description: "Delete a paused or stale Flow Interview"
-          hints:
-            readOnly: false
-            destructive: true
-            idempotent: true
-          call: "salesforce-flow.delete-flow-interview"
-          with:
-            interviewId: "tools.interviewId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-invocable-flows
-          description: "List all Flows exposed as invocable actions"
-          hints:
-            readOnly: true
-            idempotent: true
-            openWorld: true
-          call: "salesforce-flow.list-invocable-flows"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-invocable-flow-schema
-          description: "Get input and output variable schema for an invocable flow"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "salesforce-flow.get-invocable-flow-metadata"
-          with:
-            flowApiName: "tools.flowApiName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: invoke-flow
-          description: "Execute a Salesforce Flow as an invocable action with specified input variables"
-          hints:
-            readOnly: false
-            destructive: false
-          call: "salesforce-flow.invoke-flow"
-          with:
-            flowApiName: "tools.flowApiName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: query-flows
-          description: "Query Flow records using SOQL for advanced filtering"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "salesforce-flow.query-flows"
-          with:
-            q: "tools.q"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: flow-automation-api
+    description: Unified REST API for Salesforce Flow automation management.
+    resources:
+    - path: /v1/flows
+      name: flows
+      description: Flow definition management
+      operations:
+      - method: GET
+        name: list-flows
+        description: List all Flow definitions in the org
+        call: salesforce-flow.list-flows
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/flows/{flowId}
+      name: flow
+      description: Individual flow operations
+      operations:
+      - method: GET
+        name: get-flow
+        description: Get a specific Flow definition
+        call: salesforce-flow.get-flow
+        with:
+          flowId: rest.flowId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: update-flow
+        description: Update a Flow definition
+        call: salesforce-flow.update-flow
+        with:
+          flowId: rest.flowId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/interviews
+      name: interviews
+      description: Flow interview (execution instance) management
+      operations:
+      - method: POST
+        name: create-flow-interview
+        description: Start a new Flow Interview
+        call: salesforce-flow.create-flow-interview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/interviews/{interviewId}
+      name: interview
+      description: Individual interview operations
+      operations:
+      - method: GET
+        name: get-flow-interview
+        description: Get current Flow Interview state
+        call: salesforce-flow.get-flow-interview
+        with:
+          interviewId: rest.interviewId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-flow-interview
+        description: Delete a Flow Interview
+        call: salesforce-flow.delete-flow-interview
+        with:
+          interviewId: rest.interviewId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invocable-flows
+      name: invocable-flows
+      description: Invocable flow action catalog
+      operations:
+      - method: GET
+        name: list-invocable-flows
+        description: List all invocable flow actions
+        call: salesforce-flow.list-invocable-flows
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invocable-flows/{flowApiName}
+      name: invocable-flow
+      description: Execute specific invocable flows
+      operations:
+      - method: GET
+        name: get-invocable-flow-metadata
+        description: Get invocable flow input/output schema
+        call: salesforce-flow.get-invocable-flow-metadata
+        with:
+          flowApiName: rest.flowApiName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: invoke-flow
+        description: Execute a flow action
+        call: salesforce-flow.invoke-flow
+        with:
+          flowApiName: rest.flowApiName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: flow-automation-mcp
+    transport: http
+    description: MCP server for AI-assisted Salesforce Flow automation management.
+    tools:
+    - name: list-flows
+      description: List all Flow definitions in the Salesforce org
+      hints:
+        readOnly: true
+        idempotent: true
+        openWorld: true
+      call: salesforce-flow.list-flows
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-flow
+      description: Get details for a specific Flow definition by ID
+      hints:
+        readOnly: true
+        idempotent: true
+      call: salesforce-flow.get-flow
+      with:
+        flowId: tools.flowId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-flow
+      description: Update a Flow definition's status or description
+      hints:
+        readOnly: false
+        idempotent: true
+      call: salesforce-flow.update-flow
+      with:
+        flowId: tools.flowId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-flow-interview
+      description: Create and start a new Flow Interview instance with input variables
+      hints:
+        readOnly: false
+        destructive: false
+      call: salesforce-flow.create-flow-interview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-flow-interview-status
+      description: Get the current state and output variables of a running Flow Interview
+      hints:
+        readOnly: true
+        idempotent: true
+      call: salesforce-flow.get-flow-interview
+      with:
+        interviewId: tools.interviewId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-flow-interview
+      description: Delete a paused or stale Flow Interview
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: salesforce-flow.delete-flow-interview
+      with:
+        interviewId: tools.interviewId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-invocable-flows
+      description: List all Flows exposed as invocable actions
+      hints:
+        readOnly: true
+        idempotent: true
+        openWorld: true
+      call: salesforce-flow.list-invocable-flows
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-invocable-flow-schema
+      description: Get input and output variable schema for an invocable flow
+      hints:
+        readOnly: true
+        idempotent: true
+      call: salesforce-flow.get-invocable-flow-metadata
+      with:
+        flowApiName: tools.flowApiName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: invoke-flow
+      description: Execute a Salesforce Flow as an invocable action with specified input variables
+      hints:
+        readOnly: false
+        destructive: false
+      call: salesforce-flow.invoke-flow
+      with:
+        flowApiName: tools.flowApiName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-flows
+      description: Query Flow records using SOQL for advanced filtering
+      hints:
+        readOnly: true
+        idempotent: true
+      call: salesforce-flow.query-flows
+      with:
+        q: tools.q
+      outputParameters:
+      - type: object
+        mapping: $.
