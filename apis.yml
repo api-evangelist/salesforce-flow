@@ -71,23 +71,23 @@ apis:
 common:
   - type: Portal
     url: https://developer.salesforce.com/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://trailhead.salesforce.com/content/learn/modules/flow-builder
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
-  - type: Rate Limits
+  - type: RateLimits
     url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
-  - type: Status
+  - type: StatusPage
     url: https://status.salesforce.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.salesforce.com/company/legal/agreements/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.salesforce.com/company/privacy/
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.flow.meta/flow/
   - type: Trailhead Learning
     url: https://trailhead.salesforce.com/content/learn/modules/flow-builder
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/salesforce
   - type: Spectral Rules
     url: rules/salesforce-flow-rules.yml
