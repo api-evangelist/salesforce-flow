@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Flow REST API — Invocable Actions
+  description: 'Salesforce Flow REST API — Invocable Actions. 3 operations. Lead operation: List Invocable Flows. Self-contained
+    Naftiko capability covering one Salesforce Flow business surface.'
+  tags:
+  - Salesforce Flow
+  - Invocable Actions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_FLOW_API_KEY: SALESFORCE_FLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-invocable-actions
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Flow REST API — Invocable Actions business capability. Self-contained, no shared references.
+    resources:
+    - name: actions-custom-flow
+      path: /actions/custom/flow
+      operations:
+      - name: listinvocableflows
+        method: GET
+        description: List Invocable Flows
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: actions-custom-flow-flowApiName
+      path: /actions/custom/flow/{flowApiName}
+      operations:
+      - name: getinvocableflowmetadata
+        method: GET
+        description: Get Invocable Flow Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: flowApiName
+          in: path
+          type: string
+          description: The API name of the Flow
+          required: true
+      - name: invokeflow
+        method: POST
+        description: Invoke Flow Action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: flowApiName
+          in: path
+          type: string
+          description: The API name of the Flow to invoke
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_FLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-invocable-actions-rest
+    port: 8080
+    description: REST adapter for Salesforce Flow REST API — Invocable Actions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/actions/custom/flow
+      name: actions-custom-flow
+      description: REST surface for actions-custom-flow.
+      operations:
+      - method: GET
+        name: listinvocableflows
+        description: List Invocable Flows
+        call: rest-invocable-actions.listinvocableflows
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/custom/flow/{flowapiname}
+      name: actions-custom-flow-flowapiname
+      description: REST surface for actions-custom-flow-flowApiName.
+      operations:
+      - method: GET
+        name: getinvocableflowmetadata
+        description: Get Invocable Flow Metadata
+        call: rest-invocable-actions.getinvocableflowmetadata
+        with:
+          flowApiName: rest.flowApiName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: invokeflow
+        description: Invoke Flow Action
+        call: rest-invocable-actions.invokeflow
+        with:
+          flowApiName: rest.flowApiName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-invocable-actions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Flow REST API — Invocable Actions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-invocable-flows
+      description: List Invocable Flows
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-invocable-actions.listinvocableflows
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-invocable-flow-metadata
+      description: Get Invocable Flow Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-invocable-actions.getinvocableflowmetadata
+      with:
+        flowApiName: tools.flowApiName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: invoke-flow-action
+      description: Invoke Flow Action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-invocable-actions.invokeflow
+      with:
+        flowApiName: tools.flowApiName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
