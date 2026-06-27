@@ -88,17 +88,17 @@ common:
     url: https://trailhead.salesforce.com/content/learn/modules/flow-builder
   - type: GitHubOrganization
     url: https://github.com/salesforce
-  - type: Spectral Rules
+  - type: SpectralRules
     url: rules/salesforce-flow-rules.yml
   - type: Capabilities
     url: capabilities/flow-automation.yaml
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/salesforce-flow-flow-definition-schema.json
     title: Flow Definition Schema
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/salesforce-flow-flow-interview-schema.json
     title: Flow Interview Schema
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: json-ld/salesforce-flow-context.jsonld
   - type: Vocabulary
     url: vocabulary/salesforce-flow-vocabulary.yml
