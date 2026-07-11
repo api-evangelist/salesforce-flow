@@ -67,6 +67,10 @@ apis:
       - type: Documentation
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_actions_invocable_flow.htm
 common:
+  - type: Authentication
+    url: authentication/salesforce-flow-authentication.yml
+  - type: OAuthScopes
+    url: scopes/salesforce-flow-scopes.yml
   - type: Portal
     url: https://developer.salesforce.com/
   - type: GettingStarted
@@ -102,6 +106,8 @@ common:
     url: json-ld/salesforce-flow-context.jsonld
   - type: Vocabulary
     url: vocabulary/salesforce-flow-vocabulary.yml
+  - url: https://developer.salesforce.com/blogs/feed
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
