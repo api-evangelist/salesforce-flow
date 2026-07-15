@@ -67,6 +67,8 @@ apis:
       - type: Documentation
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_actions_invocable_flow.htm
 common:
+  - type: AgenticAccess
+    url: agentic-access/salesforce-flow-agentic-access.yml
   - type: DomainSecurity
     url: security/salesforce-flow-domain-security.yml
   - type: Authentication
