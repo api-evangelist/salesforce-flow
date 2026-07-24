@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Flow REST Flow Definitions Invocable Actions API
+  description: REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.
+  version: 59.0.0
+  termsOfService: https://www.salesforce.com/company/legal/agreements/
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0
+  description: Salesforce Production or Developer Edition
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Invocable Actions
+  description: Operations for triggering invocable flows as actions
+paths:
+  /actions/custom/flow:
+    get:
+      operationId: listInvocableFlows
+      summary: List Invocable Flows
+      description: Returns a list of all flows that are exposed as invocable actions, including their API names and input/output variable definitions.
+      tags:
+      - Invocable Actions
+      responses:
+        '200':
+          description: Successfully retrieved invocable flows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvocableActionList'
+  /actions/custom/flow/{flowApiName}:
+    get:
+      operationId: getInvocableFlowMetadata
+      summary: Get Invocable Flow Metadata
+      description: Retrieves the input and output variable definitions for a specific invocable flow action.
+      tags:
+      - Invocable Actions
+      parameters:
+      - name: flowApiName
+        in: path
+        required: true
+        description: The API name of the Flow
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved flow action metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvocableFlowMetadata'
+    post:
+      operationId: invokeFlow
+      summary: Invoke Flow Action
+      description: Executes a Flow as an invocable action, passing input variables and receiving output variables upon completion.
+      tags:
+      - Invocable Actions
+      parameters:
+      - name: flowApiName
+        in: path
+        required: true
+        description: The API name of the Flow to invoke
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvokeFlowInput'
+      responses:
+        '200':
+          description: Flow executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvokeFlowResponse'
+        '400':
+          description: Invalid input variables or flow error
+components:
+  schemas:
+    InvocableActionList:
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              label:
+                type: string
+              type:
+                type: string
+    InvokeFlowInput:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Array of input variable objects for the flow
+    InvocableFlowMetadata:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionParameter'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionParameter'
+    ActionParameter:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        required:
+          type: boolean
+        type:
+          type: string
+        maxOccurs:
+          type: integer
+    InvokeFlowResponse:
+      type: object
+      properties:
+        outputs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Array of output variable objects from the flow
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            full: Full access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Salesforce Flow REST API Developer Guide
+  url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm

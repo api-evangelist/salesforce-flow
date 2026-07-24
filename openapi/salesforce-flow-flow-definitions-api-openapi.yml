@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Flow REST Flow Definitions API
+  description: REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.
+  version: 59.0.0
+  termsOfService: https://www.salesforce.com/company/legal/agreements/
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0
+  description: Salesforce Production or Developer Edition
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Flow Definitions
+  description: Operations for managing Flow metadata and definitions
+paths:
+  /sobjects/Flow:
+    get:
+      operationId: listFlows
+      summary: List Flow Definitions
+      description: Retrieves a list of Flow definitions available in the Salesforce org, including metadata such as API name, label, type, and status.
+      tags:
+      - Flow Definitions
+      parameters:
+      - name: q
+        in: query
+        description: SOQL query string to filter flows
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of flows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowListResponse'
+        '401':
+          description: Unauthorized - invalid or expired session
+  /sobjects/Flow/{flowId}:
+    get:
+      operationId: getFlow
+      summary: Get Flow Definition
+      description: Retrieves details about a specific Flow definition including its metadata, version, and associated interview settings.
+      tags:
+      - Flow Definitions
+      parameters:
+      - name: flowId
+        in: path
+        required: true
+        description: The unique Salesforce ID of the Flow record
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved flow definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowDefinition'
+        '404':
+          description: Flow not found
+    patch:
+      operationId: updateFlow
+      summary: Update Flow Definition
+      description: Updates metadata fields on an existing Flow definition, such as its active status or description.
+      tags:
+      - Flow Definitions
+      parameters:
+      - name: flowId
+        in: path
+        required: true
+        description: The unique Salesforce ID of the Flow record
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowUpdateInput'
+      responses:
+        '204':
+          description: Flow updated successfully
+        '400':
+          description: Invalid request payload
+  /query:
+    get:
+      operationId: queryFlows
+      summary: Query Flows with SOQL
+      description: Executes a SOQL query to retrieve Flow and FlowInterview records with custom filtering, ordering, and field selection.
+      tags:
+      - Flow Definitions
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: SOQL query string (e.g. SELECT Id, ApiName, Status FROM Flow)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Query results returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid SOQL query
+components:
+  schemas:
+    FlowUpdateInput:
+      type: object
+      properties:
+        Description:
+          type: string
+          description: Updated description for the flow
+        Status:
+          type: string
+          enum:
+          - Active
+          - Obsolete
+          description: New status for the flow
+    FlowDefinition:
+      type: object
+      properties:
+        Id:
+          type: string
+        ApiName:
+          type: string
+        Label:
+          type: string
+        Description:
+          type: string
+        ProcessType:
+          type: string
+        Status:
+          type: string
+        VersionNumber:
+          type: integer
+        CreatedDate:
+          type: string
+          format: date-time
+        LastModifiedDate:
+          type: string
+          format: date-time
+        CreatedById:
+          type: string
+        LastModifiedById:
+          type: string
+    FlowSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Salesforce record ID
+        ApiName:
+          type: string
+          description: API name of the Flow
+        Label:
+          type: string
+          description: Display label of the Flow
+        ProcessType:
+          type: string
+          description: Type of flow (Flow, AutoLaunchedFlow, etc.)
+        Status:
+          type: string
+          enum:
+          - Active
+          - Obsolete
+          - Draft
+          - InvalidDraft
+          description: Current activation status
+        VersionNumber:
+          type: integer
+          description: Version number of the flow
+    FlowListResponse:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+          description: Total number of flows returned
+        done:
+          type: boolean
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowSummary'
+    QueryResult:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
+          type: string
+        records:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            full: Full access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Salesforce Flow REST API Developer Guide
+  url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
