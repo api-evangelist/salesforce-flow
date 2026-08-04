@@ -1,0 +1,429 @@
+{
+  "info": {
+    "_postman_id": "e124ad7d-7b93-456b-b1bd-0ca14d07a8f9",
+    "name": "Salesforce Flow REST Flow Definitions Invocable Actions API",
+    "description": "REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:54.000Z",
+    "updatedAt": "2026-07-28T02:49:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e124ad7d-7b93-456b-b1bd-0ca14d07a8f9"
+  },
+  "item": [
+    {
+      "name": "actions",
+      "item": [
+        {
+          "name": "custom",
+          "item": [
+            {
+              "name": "flow",
+              "item": [
+                {
+                  "name": "{flowApiName}",
+                  "item": [
+                    {
+                      "name": "Get Invocable Flow Metadata",
+                      "id": "37df3d4c-91e2-4a6b-8020-f02b7157ad0b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/custom/flow/:flowApiName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "custom",
+                            "flow",
+                            ":flowApiName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ac534bb2-5d90-424b-bd9a-b604a432a1e0",
+                              "key": "flowApiName",
+                              "value": "<string>",
+                              "description": "(Required) The API name of the Flow"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the input and output variable definitions for a specific invocable flow action."
+                      },
+                      "response": [
+                        {
+                          "id": "4cd00d04-74c8-42d1-a846-9b5fece0bd56",
+                          "name": "Successfully retrieved flow action metadata",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/actions/custom/flow/:flowApiName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "actions",
+                                "custom",
+                                "flow",
+                                ":flowApiName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "flowApiName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"type\": \"<string>\",\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"maxOccurs\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"maxOccurs\": \"<integer>\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"maxOccurs\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"maxOccurs\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:49:54.000Z",
+                          "updatedAt": "2026-07-28T02:49:54.000Z",
+                          "uid": "35240-4cd00d04-74c8-42d1-a846-9b5fece0bd56"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:49:54.000Z",
+                      "updatedAt": "2026-07-28T02:49:54.000Z",
+                      "uid": "35240-37df3d4c-91e2-4a6b-8020-f02b7157ad0b"
+                    },
+                    {
+                      "name": "Invoke Flow Action",
+                      "id": "e06bbdef-8206-47ad-983d-46f5c025da8f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"enim_b48\": \"pariatur in exe\",\n      \"eiusmod9\": \"ut reprehenderit commodo\"\n    },\n    {\n      \"dolore4\": \"in minim velit mollit non\",\n      \"ullamco86\": false\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/custom/flow/:flowApiName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "custom",
+                            "flow",
+                            ":flowApiName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "62a813ef-35c3-42af-a004-af921da0dd3a",
+                              "key": "flowApiName",
+                              "value": "<string>",
+                              "description": "(Required) The API name of the Flow to invoke"
+                            }
+                          ]
+                        },
+                        "description": "Executes a Flow as an invocable action, passing input variables and receiving output variables upon completion."
+                      },
+                      "response": [
+                        {
+                          "id": "ff0caeea-9845-417c-904f-b5027ec6cafc",
+                          "name": "Flow executed successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"inputs\": [\n    {\n      \"enim_b48\": \"pariatur in exe\",\n      \"eiusmod9\": \"ut reprehenderit commodo\"\n    },\n    {\n      \"dolore4\": \"in minim velit mollit non\",\n      \"ullamco86\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/actions/custom/flow/:flowApiName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "actions",
+                                "custom",
+                                "flow",
+                                ":flowApiName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "flowApiName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"outputs\": [\n    {\n      \"dolor__9\": 7753933,\n      \"incididunt41\": \"velit eu incididunt\"\n    },\n    {\n      \"laborise\": -49031550.40604266,\n      \"exercitationf\": false,\n      \"proident_5\": false,\n      \"officiabc\": true\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:49:54.000Z",
+                          "updatedAt": "2026-07-28T02:49:54.000Z",
+                          "uid": "35240-ff0caeea-9845-417c-904f-b5027ec6cafc"
+                        },
+                        {
+                          "id": "7d060b88-85f6-4538-968e-97095324c0b6",
+                          "name": "Invalid input variables or flow error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"inputs\": [\n    {\n      \"enim_b48\": \"pariatur in exe\",\n      \"eiusmod9\": \"ut reprehenderit commodo\"\n    },\n    {\n      \"dolore4\": \"in minim velit mollit non\",\n      \"ullamco86\": false\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/actions/custom/flow/:flowApiName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "actions",
+                                "custom",
+                                "flow",
+                                ":flowApiName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "flowApiName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:49:54.000Z",
+                          "updatedAt": "2026-07-28T02:49:54.000Z",
+                          "uid": "35240-7d060b88-85f6-4538-968e-97095324c0b6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:49:54.000Z",
+                      "updatedAt": "2026-07-28T02:49:54.000Z",
+                      "uid": "35240-e06bbdef-8206-47ad-983d-46f5c025da8f"
+                    }
+                  ],
+                  "id": "2857c8ab-4523-42e6-be19-6bc5c356b39a",
+                  "createdAt": "2026-07-28T02:49:54.000Z",
+                  "updatedAt": "2026-07-28T02:49:54.000Z",
+                  "uid": "35240-2857c8ab-4523-42e6-be19-6bc5c356b39a"
+                },
+                {
+                  "name": "List Invocable Flows",
+                  "id": "3b8d10d5-276c-483d-914b-b7108b8e73f2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/custom/flow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "custom",
+                        "flow"
+                      ]
+                    },
+                    "description": "Returns a list of all flows that are exposed as invocable actions, including their API names and input/output variable definitions."
+                  },
+                  "response": [
+                    {
+                      "id": "8c29cb4f-1c52-4799-8f69-1ee5479a61cd",
+                      "name": "Successfully retrieved invocable flows",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/custom/flow",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "custom",
+                            "flow"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"actions\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:49:54.000Z",
+                      "updatedAt": "2026-07-28T02:49:54.000Z",
+                      "uid": "35240-8c29cb4f-1c52-4799-8f69-1ee5479a61cd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:54.000Z",
+                  "updatedAt": "2026-07-28T02:49:54.000Z",
+                  "uid": "35240-3b8d10d5-276c-483d-914b-b7108b8e73f2"
+                }
+              ],
+              "id": "037df347-5257-4821-9245-b1658f6c249e",
+              "createdAt": "2026-07-28T02:49:54.000Z",
+              "updatedAt": "2026-07-28T02:49:54.000Z",
+              "uid": "35240-037df347-5257-4821-9245-b1658f6c249e"
+            }
+          ],
+          "id": "90fc39d3-0b18-449c-aa48-315c8d232742",
+          "createdAt": "2026-07-28T02:49:54.000Z",
+          "updatedAt": "2026-07-28T02:49:54.000Z",
+          "uid": "35240-90fc39d3-0b18-449c-aa48-315c8d232742"
+        }
+      ],
+      "id": "b5b4a6de-5c49-4a14-97b6-3ff3c01d9131",
+      "createdAt": "2026-07-28T02:49:54.000Z",
+      "updatedAt": "2026-07-28T02:49:54.000Z",
+      "uid": "35240-b5b4a6de-5c49-4a14-97b6-3ff3c01d9131"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

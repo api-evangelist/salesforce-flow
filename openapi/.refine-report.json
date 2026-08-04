@@ -1,0 +1,18 @@
+{
+  "provider": "salesforce-flow",
+  "sources": [
+    "salesforce-flow-flow-definitions-api-openapi.yml",
+    "salesforce-flow-flow-interviews-api-openapi.yml",
+    "salesforce-flow-invocable-actions-api-openapi.yml"
+  ],
+  "outputs": [
+    "salesforce-flow-flow-definitions-api-openapi.yml",
+    "salesforce-flow-flow-interviews-api-openapi.yml",
+    "salesforce-flow-invocable-actions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

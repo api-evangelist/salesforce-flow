@@ -1,0 +1,631 @@
+{
+  "info": {
+    "_postman_id": "ed1cdf5d-3e02-42e2-909b-e8e546e8e74e",
+    "name": "Salesforce Flow REST Flow Definitions API",
+    "description": "REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:52.000Z",
+    "updatedAt": "2026-07-28T02:49:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed1cdf5d-3e02-42e2-909b-e8e546e8e74e"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "Flow",
+          "item": [
+            {
+              "name": "{flowId}",
+              "item": [
+                {
+                  "name": "Get Flow Definition",
+                  "id": "bb2cc445-9b26-4b43-b310-aa3a74780f9a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "Flow",
+                        ":flowId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7d2b9acf-e61a-4c36-8671-90dcf5b71fc5",
+                          "key": "flowId",
+                          "value": "<string>",
+                          "description": "(Required) The unique Salesforce ID of the Flow record"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves details about a specific Flow definition including its metadata, version, and associated interview settings."
+                  },
+                  "response": [
+                    {
+                      "id": "63456a90-2831-44b9-a220-74d6bb33c87e",
+                      "name": "Successfully retrieved flow definition",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "Flow",
+                            ":flowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"ApiName\": \"<string>\",\n  \"Label\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"ProcessType\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"VersionNumber\": \"<integer>\",\n  \"CreatedDate\": \"<dateTime>\",\n  \"LastModifiedDate\": \"<dateTime>\",\n  \"CreatedById\": \"<string>\",\n  \"LastModifiedById\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:49:52.000Z",
+                      "updatedAt": "2026-07-28T02:49:52.000Z",
+                      "uid": "35240-63456a90-2831-44b9-a220-74d6bb33c87e"
+                    },
+                    {
+                      "id": "00081e62-1e7d-4834-8cca-d5ecca726dc2",
+                      "name": "Flow not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "Flow",
+                            ":flowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:52.000Z",
+                      "updatedAt": "2026-07-28T02:49:52.000Z",
+                      "uid": "35240-00081e62-1e7d-4834-8cca-d5ecca726dc2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:52.000Z",
+                  "updatedAt": "2026-07-28T02:49:52.000Z",
+                  "uid": "35240-bb2cc445-9b26-4b43-b310-aa3a74780f9a"
+                },
+                {
+                  "name": "Update Flow Definition",
+                  "id": "f5a9fec7-d460-4cc8-acbd-56b6293d5991",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Description\": \"<string>\",\n  \"Status\": \"Obsolete\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "Flow",
+                        ":flowId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "07c80638-d231-41e5-9152-a89909cb91f7",
+                          "key": "flowId",
+                          "value": "<string>",
+                          "description": "(Required) The unique Salesforce ID of the Flow record"
+                        }
+                      ]
+                    },
+                    "description": "Updates metadata fields on an existing Flow definition, such as its active status or description."
+                  },
+                  "response": [
+                    {
+                      "id": "372a0ec8-4053-44d3-890d-0f0123cb4801",
+                      "name": "Flow updated successfully",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"Status\": \"Obsolete\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "Flow",
+                            ":flowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:52.000Z",
+                      "updatedAt": "2026-07-28T02:49:52.000Z",
+                      "uid": "35240-372a0ec8-4053-44d3-890d-0f0123cb4801"
+                    },
+                    {
+                      "id": "a15c6c96-641a-4890-897c-ba049a703b7a",
+                      "name": "Invalid request payload",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"Status\": \"Obsolete\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "Flow",
+                            ":flowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:52.000Z",
+                      "updatedAt": "2026-07-28T02:49:52.000Z",
+                      "uid": "35240-a15c6c96-641a-4890-897c-ba049a703b7a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:52.000Z",
+                  "updatedAt": "2026-07-28T02:49:52.000Z",
+                  "uid": "35240-f5a9fec7-d460-4cc8-acbd-56b6293d5991"
+                }
+              ],
+              "id": "015b4f72-4613-4ddc-83db-7cbfa1478427",
+              "createdAt": "2026-07-28T02:49:52.000Z",
+              "updatedAt": "2026-07-28T02:49:52.000Z",
+              "uid": "35240-015b4f72-4613-4ddc-83db-7cbfa1478427"
+            },
+            {
+              "name": "List Flow Definitions",
+              "id": "30d44e6f-ba18-4500-a5b7-4b1c1b2051e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/Flow?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "Flow"
+                  ],
+                  "query": [
+                    {
+                      "description": "SOQL query string to filter flows",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves a list of Flow definitions available in the Salesforce org, including metadata such as API name, label, type, and status."
+              },
+              "response": [
+                {
+                  "id": "d45a1693-ab4d-4761-9eb9-627ec1a80f2d",
+                  "name": "Successfully retrieved list of flows",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/Flow?q=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "Flow"
+                      ],
+                      "query": [
+                        {
+                          "description": "SOQL query string to filter flows",
+                          "key": "q",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"records\": [\n    {\n      \"Id\": \"<string>\",\n      \"ApiName\": \"<string>\",\n      \"Label\": \"<string>\",\n      \"ProcessType\": \"<string>\",\n      \"Status\": \"InvalidDraft\",\n      \"VersionNumber\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"ApiName\": \"<string>\",\n      \"Label\": \"<string>\",\n      \"ProcessType\": \"<string>\",\n      \"Status\": \"Draft\",\n      \"VersionNumber\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:52.000Z",
+                  "updatedAt": "2026-07-28T02:49:52.000Z",
+                  "uid": "35240-d45a1693-ab4d-4761-9eb9-627ec1a80f2d"
+                },
+                {
+                  "id": "dc6a9f35-6d54-4c94-bf47-f621c6556eb0",
+                  "name": "Unauthorized - invalid or expired session",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/Flow?q=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "Flow"
+                      ],
+                      "query": [
+                        {
+                          "description": "SOQL query string to filter flows",
+                          "key": "q",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:49:52.000Z",
+                  "updatedAt": "2026-07-28T02:49:52.000Z",
+                  "uid": "35240-dc6a9f35-6d54-4c94-bf47-f621c6556eb0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:52.000Z",
+              "updatedAt": "2026-07-28T02:49:52.000Z",
+              "uid": "35240-30d44e6f-ba18-4500-a5b7-4b1c1b2051e4"
+            }
+          ],
+          "id": "4f34339c-ddbd-4233-bd64-02482e002587",
+          "createdAt": "2026-07-28T02:49:52.000Z",
+          "updatedAt": "2026-07-28T02:49:52.000Z",
+          "uid": "35240-4f34339c-ddbd-4233-bd64-02482e002587"
+        }
+      ],
+      "id": "dea2760d-84ba-454a-a6e4-78b2d2a42511",
+      "createdAt": "2026-07-28T02:49:52.000Z",
+      "updatedAt": "2026-07-28T02:49:52.000Z",
+      "uid": "35240-dea2760d-84ba-454a-a6e4-78b2d2a42511"
+    },
+    {
+      "name": "query",
+      "item": [
+        {
+          "name": "Query Flows with SOQL",
+          "id": "92c160e8-ed27-4630-b4e1-957e5d611cc5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/query?q=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query"
+              ],
+              "query": [
+                {
+                  "description": "(Required) SOQL query string (e.g. SELECT Id, ApiName, Status FROM Flow)",
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Executes a SOQL query to retrieve Flow and FlowInterview records with custom filtering, ordering, and field selection."
+          },
+          "response": [
+            {
+              "id": "8a5e66ae-38e0-4b80-a653-f03d0e91eb8b",
+              "name": "Query results returned",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) SOQL query string (e.g. SELECT Id, ApiName, Status FROM Flow)",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"nextRecordsUrl\": \"<string>\",\n  \"records\": [\n    {\n      \"aliquip_63\": 55866954.59586632\n    },\n    {\n      \"non_a\": -1592749,\n      \"do_d\": true\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:49:52.000Z",
+              "updatedAt": "2026-07-28T02:49:52.000Z",
+              "uid": "35240-8a5e66ae-38e0-4b80-a653-f03d0e91eb8b"
+            },
+            {
+              "id": "ae8d0daf-12b4-428d-942c-a1e196b2c08a",
+              "name": "Invalid SOQL query",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) SOQL query string (e.g. SELECT Id, ApiName, Status FROM Flow)",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:49:52.000Z",
+              "updatedAt": "2026-07-28T02:49:52.000Z",
+              "uid": "35240-ae8d0daf-12b4-428d-942c-a1e196b2c08a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:52.000Z",
+          "updatedAt": "2026-07-28T02:49:52.000Z",
+          "uid": "35240-92c160e8-ed27-4630-b4e1-957e5d611cc5"
+        }
+      ],
+      "id": "604de10a-632a-417e-951a-24de61f3baaf",
+      "createdAt": "2026-07-28T02:49:52.000Z",
+      "updatedAt": "2026-07-28T02:49:52.000Z",
+      "uid": "35240-604de10a-632a-417e-951a-24de61f3baaf"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

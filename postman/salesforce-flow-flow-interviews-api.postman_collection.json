@@ -1,0 +1,473 @@
+{
+  "info": {
+    "_postman_id": "87e9c20c-d839-464a-b123-d52ce1a0debe",
+    "name": "Salesforce Flow REST Flow Definitions Flow Interviews API",
+    "description": "REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:53.000Z",
+    "updatedAt": "2026-07-28T02:49:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87e9c20c-d839-464a-b123-d52ce1a0debe"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "FlowInterview",
+          "item": [
+            {
+              "name": "{interviewId}",
+              "item": [
+                {
+                  "name": "Get Flow Interview",
+                  "id": "817e4fb8-ae14-42e2-b187-fde5dbdb528c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/FlowInterview/:interviewId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "FlowInterview",
+                        ":interviewId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "72946414-1ad9-40f7-a920-6fcc436f23b9",
+                          "key": "interviewId",
+                          "value": "<string>",
+                          "description": "(Required) The unique Salesforce ID of the FlowInterview record"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the current state, status, and output variables of a running or completed Flow Interview."
+                  },
+                  "response": [
+                    {
+                      "id": "7f6841d1-5216-433a-be43-bf3373e8df3a",
+                      "name": "Successfully retrieved flow interview",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/FlowInterview/:interviewId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "FlowInterview",
+                            ":interviewId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "interviewId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"CurrentElement\": \"<string>\",\n  \"GuidedFlowName\": \"<string>\",\n  \"HasFinished\": \"<boolean>\",\n  \"Name\": \"<string>\",\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Output variable value\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Output variable value\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:49:53.000Z",
+                      "updatedAt": "2026-07-28T02:49:53.000Z",
+                      "uid": "35240-7f6841d1-5216-433a-be43-bf3373e8df3a"
+                    },
+                    {
+                      "id": "31cea722-5268-492a-be1f-e00c88adbea4",
+                      "name": "Interview not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/FlowInterview/:interviewId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "FlowInterview",
+                            ":interviewId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "interviewId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:53.000Z",
+                      "updatedAt": "2026-07-28T02:49:53.000Z",
+                      "uid": "35240-31cea722-5268-492a-be1f-e00c88adbea4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-817e4fb8-ae14-42e2-b187-fde5dbdb528c"
+                },
+                {
+                  "name": "Delete Flow Interview",
+                  "id": "7e270645-084f-4efb-a7ab-e6f635ebba80",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/FlowInterview/:interviewId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "FlowInterview",
+                        ":interviewId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "896bd7c0-ff2f-40af-b74a-6cb77907ab8f",
+                          "key": "interviewId",
+                          "value": "<string>",
+                          "description": "(Required) The unique Salesforce ID of the FlowInterview record"
+                        }
+                      ]
+                    },
+                    "description": "Deletes a Flow Interview record. Typically used for paused interviews that are no longer needed."
+                  },
+                  "response": [
+                    {
+                      "id": "107f7258-7a18-4080-ace8-f797b60d6a4f",
+                      "name": "Interview deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/FlowInterview/:interviewId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "FlowInterview",
+                            ":interviewId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "interviewId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:53.000Z",
+                      "updatedAt": "2026-07-28T02:49:53.000Z",
+                      "uid": "35240-107f7258-7a18-4080-ace8-f797b60d6a4f"
+                    },
+                    {
+                      "id": "98ef39a0-d13c-491a-86c1-e87f4a031d70",
+                      "name": "Interview not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/FlowInterview/:interviewId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "FlowInterview",
+                            ":interviewId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "interviewId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:53.000Z",
+                      "updatedAt": "2026-07-28T02:49:53.000Z",
+                      "uid": "35240-98ef39a0-d13c-491a-86c1-e87f4a031d70"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-7e270645-084f-4efb-a7ab-e6f635ebba80"
+                }
+              ],
+              "id": "78227a2f-384d-4fd2-bd2c-f0457182e832",
+              "createdAt": "2026-07-28T02:49:53.000Z",
+              "updatedAt": "2026-07-28T02:49:53.000Z",
+              "uid": "35240-78227a2f-384d-4fd2-bd2c-f0457182e832"
+            },
+            {
+              "name": "Create Flow Interview",
+              "id": "3f537dd1-057f-4398-8ec8-32e37da95829",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FlowDefinitionView\": {\n    \"ApiName\": \"<string>\"\n  },\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Variable value (any type)\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Variable value (any type)\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/FlowInterview",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "FlowInterview"
+                  ]
+                },
+                "description": "Creates and starts a new Flow Interview (a running instance of a Flow). Optionally passes input variables to initialize the Flow."
+              },
+              "response": [
+                {
+                  "id": "c4e17e67-05f9-45ba-a95f-d846021a14ff",
+                  "name": "Flow Interview created and started",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"FlowDefinitionView\": {\n    \"ApiName\": \"<string>\"\n  },\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Variable value (any type)\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Variable value (any type)\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/FlowInterview",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "FlowInterview"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-c4e17e67-05f9-45ba-a95f-d846021a14ff"
+                },
+                {
+                  "id": "04a6c328-24bd-4a35-a428-795fd0e1846d",
+                  "name": "Invalid request or Flow not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"FlowDefinitionView\": {\n    \"ApiName\": \"<string>\"\n  },\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Variable value (any type)\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": {\n        \"description\": \"Variable value (any type)\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/FlowInterview",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "FlowInterview"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-04a6c328-24bd-4a35-a428-795fd0e1846d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:53.000Z",
+              "updatedAt": "2026-07-28T02:49:53.000Z",
+              "uid": "35240-3f537dd1-057f-4398-8ec8-32e37da95829"
+            }
+          ],
+          "id": "71936ba2-791e-4367-9cd5-e4d4abfef5e2",
+          "createdAt": "2026-07-28T02:49:53.000Z",
+          "updatedAt": "2026-07-28T02:49:53.000Z",
+          "uid": "35240-71936ba2-791e-4367-9cd5-e4d4abfef5e2"
+        }
+      ],
+      "id": "5bd089f8-4147-47e5-b18f-e4a16ecf46be",
+      "createdAt": "2026-07-28T02:49:53.000Z",
+      "updatedAt": "2026-07-28T02:49:53.000Z",
+      "uid": "35240-5bd089f8-4147-47e5-b18f-e4a16ecf46be"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}
