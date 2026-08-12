@@ -146,8 +146,6 @@ common:
     url: https://github.com/salesforce
   - type: SpectralRules
     url: rules/salesforce-flow-rules.yml
-  - type: Capabilities
-    url: capabilities/flow-automation.yaml
   - type: JSONSchema
     url: json-schema/salesforce-flow-flow-definition-schema.json
     title: Flow Definition Schema
