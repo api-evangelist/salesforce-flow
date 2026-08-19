@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Flow REST Flow Definitions Invocable Actions API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invocable Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invocable Flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/actions/custom/flow"
+          },
+          "docs": "Returns a list of all flows that are exposed as invocable actions, including their API names and input/output variable definitions."
+        },
+        {
+          "info": {
+            "name": "Get Invocable Flow Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/actions/custom/flow/:flowApiName",
+            "params": [
+              {
+                "name": "flowApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Flow"
+              }
+            ]
+          },
+          "docs": "Retrieves the input and output variable definitions for a specific invocable flow action."
+        },
+        {
+          "info": {
+            "name": "Invoke Flow Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/actions/custom/flow/:flowApiName",
+            "params": [
+              {
+                "name": "flowApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Flow to invoke"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a Flow as an invocable action, passing input variables and receiving output variables upon completion."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

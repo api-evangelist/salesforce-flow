@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Flow REST Flow Definitions Flow Interviews API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flow Interviews",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Flow Interview",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/sobjects/FlowInterview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and starts a new Flow Interview (a running instance of a Flow). Optionally passes input variables to initialize the Flow."
+        },
+        {
+          "info": {
+            "name": "Get Flow Interview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/sobjects/FlowInterview/:interviewId",
+            "params": [
+              {
+                "name": "interviewId",
+                "value": "",
+                "type": "path",
+                "description": "The unique Salesforce ID of the FlowInterview record"
+              }
+            ]
+          },
+          "docs": "Retrieves the current state, status, and output variables of a running or completed Flow Interview."
+        },
+        {
+          "info": {
+            "name": "Delete Flow Interview",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/sobjects/FlowInterview/:interviewId",
+            "params": [
+              {
+                "name": "interviewId",
+                "value": "",
+                "type": "path",
+                "description": "The unique Salesforce ID of the FlowInterview record"
+              }
+            ]
+          },
+          "docs": "Deletes a Flow Interview record. Typically used for paused interviews that are no longer needed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
