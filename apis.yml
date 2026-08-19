@@ -20,7 +20,7 @@ image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-sale
 url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
 created: 2024-01-15T00:00:00.000Z
 modified: '2026-05-19'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 tags:
   - Automation
   - Business Process
