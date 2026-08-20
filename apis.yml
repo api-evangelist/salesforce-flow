@@ -28,6 +28,14 @@ tags:
   - Flow
   - Process Builder
   - Salesforce
+  - Workflows
+tags_raw:
+  - Automation
+  - Business Process
+  - CRM
+  - Flow
+  - Process Builder
+  - Salesforce
   - Workflow
 apis:
 - name: Salesforce Tooling API (Flow)
