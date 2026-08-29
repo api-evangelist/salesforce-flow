@@ -3,6 +3,18 @@ description: >-
   The Salesforce Flow API enables developers to interact with and manage Salesforce Flow automation processes
   programmatically. This includes creating, updating, querying, and executing flows within Salesforce using the REST
   API, Tooling API, and Invocable Actions framework.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
