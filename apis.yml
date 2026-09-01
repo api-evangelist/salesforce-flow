@@ -28,7 +28,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg
+image: ''
 url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm
 created: 2024-01-15T00:00:00.000Z
 modified: '2026-05-19'
