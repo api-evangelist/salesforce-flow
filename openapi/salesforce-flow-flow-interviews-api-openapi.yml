@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Flow REST Flow Definitions Flow Interviews API
+  title: Salesforce Flow REST Flow Interviews API
   description: REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.
   version: 59.0.0
   termsOfService: https://www.salesforce.com/company/legal/agreements/
@@ -89,26 +89,13 @@ paths:
           description: Interview not found
 components:
   schemas:
-    FlowInputVariable:
+    FlowOutputVariable:
       type: object
       properties:
         name:
           type: string
-          description: Variable name
         value:
-          description: Variable value (any type)
-    CreateResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Salesforce record ID of the created resource
-        success:
-          type: boolean
-        errors:
-          type: array
-          items:
-            type: string
+          description: Output variable value
     FlowInterview:
       type: object
       properties:
@@ -143,13 +130,26 @@ components:
           description: Input variable values for the flow
           items:
             $ref: '#/components/schemas/FlowInputVariable'
-    FlowOutputVariable:
+    CreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Salesforce record ID of the created resource
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string
+    FlowInputVariable:
       type: object
       properties:
         name:
           type: string
+          description: Variable name
         value:
-          description: Output variable value
+          description: Variable value (any type)
   securitySchemes:
     oauth2:
       type: oauth2

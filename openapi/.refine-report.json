@@ -1,9 +1,7 @@
 {
   "provider": "salesforce-flow",
   "sources": [
-    "salesforce-flow-flow-definitions-api-openapi.yml",
-    "salesforce-flow-flow-interviews-api-openapi.yml",
-    "salesforce-flow-invocable-actions-api-openapi.yml"
+    "_original/salesforce-flow-rest-api-openapi.yml"
   ],
   "outputs": [
     "salesforce-flow-flow-definitions-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "salesforce-flow-rest-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "salesforce-flow-flow-definitions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "salesforce-flow-flow-interviews-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "salesforce-flow-invocable-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
