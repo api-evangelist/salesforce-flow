@@ -119,20 +119,6 @@ paths:
           description: Invalid SOQL query
 components:
   schemas:
-    QueryResult:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-        done:
-          type: boolean
-        nextRecordsUrl:
-          type: string
-        records:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     FlowDefinition:
       type: object
       properties:
@@ -160,6 +146,20 @@ components:
           type: string
         LastModifiedById:
           type: string
+    QueryResult:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
+          type: string
+        records:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
     FlowListResponse:
       type: object
       properties:

@@ -89,15 +89,6 @@ paths:
           description: Invalid input variables or flow error
 components:
   schemas:
-    InvokeFlowResponse:
-      type: object
-      properties:
-        outputs:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-          description: Array of output variable objects from the flow
     InvocableFlowMetadata:
       type: object
       properties:
@@ -124,6 +115,15 @@ components:
             type: object
             additionalProperties: true
           description: Array of input variable objects for the flow
+    InvokeFlowResponse:
+      type: object
+      properties:
+        outputs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Array of output variable objects from the flow
     ActionParameter:
       type: object
       properties:

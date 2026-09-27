@@ -89,6 +89,30 @@ paths:
           description: Interview not found
 components:
   schemas:
+    FlowInputVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Variable name
+        value:
+          description: Variable value (any type)
+    FlowInterviewInput:
+      type: object
+      required:
+      - FlowDefinitionView
+      properties:
+        FlowDefinitionView:
+          type: object
+          properties:
+            ApiName:
+              type: string
+              description: API name of the flow to start
+        inputs:
+          type: array
+          description: Input variable values for the flow
+          items:
+            $ref: '#/components/schemas/FlowInputVariable'
     FlowOutputVariable:
       type: object
       properties:
@@ -96,6 +120,18 @@ components:
           type: string
         value:
           description: Output variable value
+    CreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Salesforce record ID of the created resource
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string
     FlowInterview:
       type: object
       properties:
@@ -114,42 +150,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlowOutputVariable'
-    FlowInterviewInput:
-      type: object
-      required:
-      - FlowDefinitionView
-      properties:
-        FlowDefinitionView:
-          type: object
-          properties:
-            ApiName:
-              type: string
-              description: API name of the flow to start
-        inputs:
-          type: array
-          description: Input variable values for the flow
-          items:
-            $ref: '#/components/schemas/FlowInputVariable'
-    CreateResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Salesforce record ID of the created resource
-        success:
-          type: boolean
-        errors:
-          type: array
-          items:
-            type: string
-    FlowInputVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Variable name
-        value:
-          description: Variable value (any type)
   securitySchemes:
     oauth2:
       type: oauth2
