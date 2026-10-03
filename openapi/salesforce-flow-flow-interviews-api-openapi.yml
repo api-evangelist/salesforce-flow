@@ -89,14 +89,6 @@ paths:
           description: Interview not found
 components:
   schemas:
-    FlowInputVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Variable name
-        value:
-          description: Variable value (any type)
     FlowInterviewInput:
       type: object
       required:
@@ -120,18 +112,14 @@ components:
           type: string
         value:
           description: Output variable value
-    CreateResponse:
+    FlowInputVariable:
       type: object
       properties:
-        id:
+        name:
           type: string
-          description: Salesforce record ID of the created resource
-        success:
-          type: boolean
-        errors:
-          type: array
-          items:
-            type: string
+          description: Variable name
+        value:
+          description: Variable value (any type)
     FlowInterview:
       type: object
       properties:
@@ -150,6 +138,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlowOutputVariable'
+    CreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Salesforce record ID of the created resource
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string
   securitySchemes:
     oauth2:
       type: oauth2

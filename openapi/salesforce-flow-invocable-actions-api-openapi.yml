@@ -89,6 +89,21 @@ paths:
           description: Invalid input variables or flow error
 components:
   schemas:
+    ActionParameter:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        required:
+          type: boolean
+        type:
+          type: string
+        maxOccurs:
+          type: integer
     InvocableFlowMetadata:
       type: object
       properties:
@@ -124,21 +139,6 @@ components:
             type: object
             additionalProperties: true
           description: Array of output variable objects from the flow
-    ActionParameter:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        required:
-          type: boolean
-        type:
-          type: string
-        maxOccurs:
-          type: integer
     InvocableActionList:
       type: object
       properties:

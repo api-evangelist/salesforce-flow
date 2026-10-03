@@ -146,32 +146,18 @@ components:
           type: string
         LastModifiedById:
           type: string
-    QueryResult:
+    FlowUpdateInput:
       type: object
       properties:
-        totalSize:
-          type: integer
-        done:
-          type: boolean
-        nextRecordsUrl:
+        Description:
           type: string
-        records:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    FlowListResponse:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-          description: Total number of flows returned
-        done:
-          type: boolean
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowSummary'
+          description: Updated description for the flow
+        Status:
+          type: string
+          enum:
+          - Active
+          - Obsolete
+          description: New status for the flow
     FlowSummary:
       type: object
       properties:
@@ -198,18 +184,32 @@ components:
         VersionNumber:
           type: integer
           description: Version number of the flow
-    FlowUpdateInput:
+    QueryResult:
       type: object
       properties:
-        Description:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
           type: string
-          description: Updated description for the flow
-        Status:
-          type: string
-          enum:
-          - Active
-          - Obsolete
-          description: New status for the flow
+        records:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    FlowListResponse:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+          description: Total number of flows returned
+        done:
+          type: boolean
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowSummary'
   securitySchemes:
     oauth2:
       type: oauth2
