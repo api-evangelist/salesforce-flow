@@ -119,6 +119,18 @@ paths:
           description: Invalid SOQL query
 components:
   schemas:
+    FlowListResponse:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+          description: Total number of flows returned
+        done:
+          type: boolean
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowSummary'
     FlowDefinition:
       type: object
       properties:
@@ -158,6 +170,20 @@ components:
           - Active
           - Obsolete
           description: New status for the flow
+    QueryResult:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
+          type: string
+        records:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
     FlowSummary:
       type: object
       properties:
@@ -184,32 +210,6 @@ components:
         VersionNumber:
           type: integer
           description: Version number of the flow
-    QueryResult:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-        done:
-          type: boolean
-        nextRecordsUrl:
-          type: string
-        records:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    FlowListResponse:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-          description: Total number of flows returned
-        done:
-          type: boolean
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowSummary'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -89,47 +89,6 @@ paths:
           description: Invalid input variables or flow error
 components:
   schemas:
-    ActionParameter:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        required:
-          type: boolean
-        type:
-          type: string
-        maxOccurs:
-          type: integer
-    InvocableFlowMetadata:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionParameter'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionParameter'
-    InvokeFlowInput:
-      type: object
-      properties:
-        inputs:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-          description: Array of input variable objects for the flow
     InvokeFlowResponse:
       type: object
       properties:
@@ -153,6 +112,47 @@ components:
                 type: string
               type:
                 type: string
+    InvokeFlowInput:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Array of input variable objects for the flow
+    InvocableFlowMetadata:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionParameter'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionParameter'
+    ActionParameter:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        required:
+          type: boolean
+        type:
+          type: string
+        maxOccurs:
+          type: integer
   securitySchemes:
     oauth2:
       type: oauth2
