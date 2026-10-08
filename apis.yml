@@ -118,6 +118,10 @@ apis:
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
 common:
+- type: Plans
+  url: plans/salesforce-flow-plans-pricing.yml
+- type: FinOps
+  url: finops/salesforce-flow-finops.yml
 - type: Website
   url: https://www.salesforce.com/
 - type: PostmanWorkspace
