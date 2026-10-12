@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/salesforce-flow/integrations
+- https://n8n.io/integrations/salesforce-flow/
+- https://composio.dev/toolkits/salesforce-flow
+- https://monid.ai/tools/salesforce-flow
+checked:
+- https://composio.dev/toolkits/salesforce-flow
+- https://monid.ai/tools/salesforce-flow
+- https://n8n.io/integrations/salesforce-flow/
+- https://zapier.com/apps/salesforce-flow/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
