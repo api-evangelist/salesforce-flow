@@ -89,6 +89,22 @@ paths:
           description: Interview not found
 components:
   schemas:
+    FlowInterviewInput:
+      type: object
+      required:
+      - FlowDefinitionView
+      properties:
+        FlowDefinitionView:
+          type: object
+          properties:
+            ApiName:
+              type: string
+              description: API name of the flow to start
+        inputs:
+          type: array
+          description: Input variable values for the flow
+          items:
+            $ref: '#/components/schemas/FlowInputVariable'
     FlowOutputVariable:
       type: object
       properties:
@@ -134,22 +150,6 @@ components:
           description: Variable name
         value:
           description: Variable value (any type)
-    FlowInterviewInput:
-      type: object
-      required:
-      - FlowDefinitionView
-      properties:
-        FlowDefinitionView:
-          type: object
-          properties:
-            ApiName:
-              type: string
-              description: API name of the flow to start
-        inputs:
-          type: array
-          description: Input variable values for the flow
-          items:
-            $ref: '#/components/schemas/FlowInputVariable'
   securitySchemes:
     oauth2:
       type: oauth2

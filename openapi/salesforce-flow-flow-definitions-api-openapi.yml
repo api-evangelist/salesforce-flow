@@ -119,18 +119,44 @@ paths:
           description: Invalid SOQL query
 components:
   schemas:
-    FlowListResponse:
+    FlowUpdateInput:
       type: object
       properties:
-        totalSize:
+        Description:
+          type: string
+          description: Updated description for the flow
+        Status:
+          type: string
+          enum:
+          - Active
+          - Obsolete
+          description: New status for the flow
+    FlowSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Salesforce record ID
+        ApiName:
+          type: string
+          description: API name of the Flow
+        Label:
+          type: string
+          description: Display label of the Flow
+        ProcessType:
+          type: string
+          description: Type of flow (Flow, AutoLaunchedFlow, etc.)
+        Status:
+          type: string
+          enum:
+          - Active
+          - Obsolete
+          - Draft
+          - InvalidDraft
+          description: Current activation status
+        VersionNumber:
           type: integer
-          description: Total number of flows returned
-        done:
-          type: boolean
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowSummary'
+          description: Version number of the flow
     FlowDefinition:
       type: object
       properties:
@@ -158,18 +184,18 @@ components:
           type: string
         LastModifiedById:
           type: string
-    FlowUpdateInput:
+    FlowListResponse:
       type: object
       properties:
-        Description:
-          type: string
-          description: Updated description for the flow
-        Status:
-          type: string
-          enum:
-          - Active
-          - Obsolete
-          description: New status for the flow
+        totalSize:
+          type: integer
+          description: Total number of flows returned
+        done:
+          type: boolean
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowSummary'
     QueryResult:
       type: object
       properties:
@@ -184,32 +210,6 @@ components:
           items:
             type: object
             additionalProperties: true
-    FlowSummary:
-      type: object
-      properties:
-        Id:
-          type: string
-          description: Salesforce record ID
-        ApiName:
-          type: string
-          description: API name of the Flow
-        Label:
-          type: string
-          description: Display label of the Flow
-        ProcessType:
-          type: string
-          description: Type of flow (Flow, AutoLaunchedFlow, etc.)
-        Status:
-          type: string
-          enum:
-          - Active
-          - Obsolete
-          - Draft
-          - InvalidDraft
-          description: Current activation status
-        VersionNumber:
-          type: integer
-          description: Version number of the flow
   securitySchemes:
     oauth2:
       type: oauth2
