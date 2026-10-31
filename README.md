@@ -1,4 +1,4 @@
-# Salesforce Flow (salesforce-flow)
+# Salesforce Flow
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,104 +66,176 @@
 
 The Salesforce Flow API enables developers to interact with and manage Salesforce Flow automation processes programmatically. This includes creating, updating, querying, and executing flows within Salesforce using the REST API, Tooling API, and Invocable Actions framework.
 
-**APIs.json:** [https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm)
+**Areas:** Automation · Business Process · CRM · Flow · Process Builder · Salesforce · Workflows
 
-## Tags
+## Salesforce Flow on APIs.io
 
-- Automation
-- Business Process
-- CRM
-- Flow
-- Process Builder
-- Salesforce
-- Workflow
+Everything profiled for Salesforce Flow is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/salesforce-flow/](https://apis.io/providers/salesforce-flow/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** Sun Jan 14 2024 19:00:00 GMT-0500 (Eastern Standard Time)
-- **Modified:** 2026-05-19
+- [Salesforce Tooling API (Flow)](https://apis.io/apis/salesforce-flow/salesforce-tooling-api-flow/) — Tooling API endpoints for managing Flow definitions and metadata. Supports deployment, retrieval, and management of Flow versions.
+- [Salesforce Flow Interviews API](https://apis.io/apis/salesforce-flow/salesforce-flow-interviews-api/) — API for executing and managing Flow interviews (instances). Provides endpoints to start, resume, pause, and monitor flow execution state.
+- [Salesforce Flow Definitions API](https://apis.io/apis/salesforce-flow/salesforce-flow-flow-definitions-api/) — Operations for managing Flow metadata and definitions
+- [Salesforce Flow Interviews API](https://apis.io/apis/salesforce-flow/salesforce-flow-flow-interviews-api/) — Operations for executing and managing Flow interviews
+- [Salesforce Flow Invocable Actions API](https://apis.io/apis/salesforce-flow/salesforce-flow-invocable-actions-api/) — Operations for triggering invocable flows as actions
 
-## APIs
+### Published properties
 
-### Salesforce Flow REST API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-REST API for managing and executing Salesforce Flows programmatically. Enables creating, updating, querying, and executing flow automation processes, flow interviews, and invocable actions within Salesforce.
+#### Agentic access (1)
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Salesforce Flow Agentic Access](https://apis.io/agentic-access/salesforce-flow/salesforce-flow-agentic-access/)
 
-- Automation
-- Flow
-- REST
+#### JSON Schema (2)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_flow.htm)
-- [OpenAPI](openapi/salesforce-flow-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-flow-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-flow-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm)
+- [Salesforce Flow Definition](https://apis.io/schemas/salesforce-flow/salesforce-flow-flow-definition/)
+- [Salesforce Flow Interview](https://apis.io/schemas/salesforce-flow/salesforce-flow-flow-interview/)
 
-### Salesforce Tooling API (Flow)
+#### JSON Structure (1)
 
-Tooling API endpoints for managing Flow definitions and metadata. Supports deployment, retrieval, and management of Flow versions.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.api_tooling.meta/api_tooling/](https://developer.salesforce.com/docs/atlas.en-us.api_tooling.meta/api_tooling/)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/tooling`
+- [Salesforce Flow Flow Definition Structure](https://apis.io/json-structure/salesforce-flow/salesforce-flow-flow-definition-structure/)
 
-#### Tags
+#### JSON-LD (1)
 
-- Flow Definition
-- Metadata
-- Tooling
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Salesforce Flow Context](https://apis.io/jsonld/salesforce-flow/salesforce-flow-context/)
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.api_tooling.meta/api_tooling/tooling_api_objects_flow.htm)
-- [Postman Collection](collections/salesforce-flow-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-flow-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Vocabulary (1)
 
-### Salesforce Flow Interviews API
+The provider's domain terms, defined.
 
-API for executing and managing Flow interviews (instances). Provides endpoints to start, resume, pause, and monitor flow execution state.
+- [Salesforce Flow Vocabulary](https://apis.io/vocabularies/salesforce-flow/salesforce-flow-vocabulary/)
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_actions_invocable_flow.htm](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_actions_invocable_flow.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/actions/custom/flow`
+#### Examples (2)
 
-#### Tags
+Example requests and responses.
 
-- Execution
-- Flow Interview
-- Runtime
+- [Salesforce Flow Invoke Flow Example](https://apis.io/examples/salesforce-flow/salesforce-flow-invoke-flow-example/)
+- [Salesforce Flow List Flows Example](https://apis.io/examples/salesforce-flow/salesforce-flow-list-flows-example/)
 
-#### Properties
+#### Collections (7)
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_actions_invocable_flow.htm)
-- [Postman Collection](collections/salesforce-flow-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-flow-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-## Common Properties
+- [Salesforce Flow REST Flow Definitions API](https://apis.io/collections/salesforce-flow/open-salesforce-flow-flow-definitions-api/)
+- [Salesforce Flow REST Flow Definitions Flow Interviews API](https://apis.io/collections/salesforce-flow/open-salesforce-flow-flow-interviews-api/)
+- [Salesforce Flow REST Flow Definitions Invocable Actions API](https://apis.io/collections/salesforce-flow/open-salesforce-flow-invocable-actions-api/)
+- [Salesforce Flow REST API](https://apis.io/collections/salesforce-flow/open-salesforce-flow-rest-api/)
+- [Salesforce Flow REST Flow Definitions API](https://apis.io/collections/salesforce-flow/postman-salesforce-flow-flow-definitions-api/)
+- [Salesforce Flow REST Flow Definitions Flow Interviews API](https://apis.io/collections/salesforce-flow/postman-salesforce-flow-flow-interviews-api/)
+- [Salesforce Flow REST Flow Definitions Invocable Actions API](https://apis.io/collections/salesforce-flow/postman-salesforce-flow-invocable-actions-api/)
 
-- [Portal](https://developer.salesforce.com/)
-- [Getting Started](https://trailhead.salesforce.com/content/learn/modules/flow-builder)
-- [Authentication](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm)
-- [Rate Limits](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
-- [Status Page](https://status.salesforce.com/)
-- [Terms of Service](https://www.salesforce.com/company/legal/agreements/)
-- [Privacy Policy](https://www.salesforce.com/company/privacy/)
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Salesforce Flow — jsonschema rules](https://apis.io/rules/salesforce-flow/salesforce-flow-jsonschema-spectral-rules/)
+- [Salesforce Flow API Rules](https://apis.io/rules/salesforce-flow/salesforce-flow-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Salesforce Flow Authentication](https://apis.io/security/salesforce-flow/salesforce-flow-authentication/)
+- [Salesforce Flow Domain Security](https://apis.io/security/salesforce-flow/salesforce-flow-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Salesforce Flow Scopes](https://apis.io/scopes/salesforce-flow/salesforce-flow-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Salesforce Flow Plans Pricing](https://apis.io/plans/salesforce-flow/salesforce-flow-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Salesforce Flow Rate Limits](https://apis.io/rate-limits/salesforce-flow/salesforce-flow-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Salesforce Flow Finops](https://apis.io/finops/salesforce-flow/salesforce-flow-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.salesforce.com/)
 - [Documentation](https://developer.salesforce.com/docs/atlas.en-us.flow.meta/flow/)
-- [Trailhead  Learning](https://trailhead.salesforce.com/content/learn/modules/flow-builder)
-- [GitHub Organization](https://github.com/salesforce)
-- [Spectral  Rules](rules/salesforce-flow-rules.yml)
-- [Capabilities](capabilities/flow-automation.yaml)
-- [J S O N  Schema](json-schema/salesforce-flow-flow-definition-schema.json)
-- [J S O N  Schema](json-schema/salesforce-flow-flow-interview-schema.json)
-- [J S O N- L D  Context](json-ld/salesforce-flow-context.jsonld)
-- [Vocabulary](vocabulary/salesforce-flow-vocabulary.yml)
+- [Getting started](https://trailhead.salesforce.com/content/learn/modules/flow-builder)
+- [Blog](https://developer.salesforce.com/blogs/feed)
+- [Terms of service](https://www.salesforce.com/company/legal/agreements/)
+- [Privacy policy](https://www.salesforce.com/company/privacy/)
+- [GitHub](https://github.com/salesforce)
+- [Status](https://status.salesforce.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 40.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 57.9 |
+| Contract governance | 23.5 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 34.5 |
+| Access clarity | 26.3 |
+
+**Agent readiness 25.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/salesforce-flow/](https://apis.io/providers/salesforce-flow/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Salesforce Flow: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/salesforce-flow/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
